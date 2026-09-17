@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+  ============================================================================
+  OLINDA BANDEIRA — PERSONAL PORTFOLIO  (single-file site)
+  Styled after the Wix "Business CV" template: white nav, warm greige bands,
+  white cards, electric cobalt-blue accents, heavy geometric black type.
+  ============================================================================
+  HOW TO USE
+    1. Open in VS Code and preview (e.g. "Live Server"), or open in a browser.
+    2. Make a folder called "assets" next to this file; drop your files in.
+    3. Publish with GitHub Pages (Settings > Pages > deploy from branch).
+
+  WHAT TO REPLACE — search the file for "REPLACE" to jump to each spot:
+    • Portrait ......... assets/olinda-portrait.jpg
+    • Project images ... assets/project-1.jpg, project-2.jpg, project-3.jpg
+    • Project text ..... names + roles + descriptions in the Projects section
+    • Résumé entries ... year / position / company / location / description
+    • Résumé file ...... assets/olinda-bandeira-resume.pdf   (DOWNLOAD CV button)
+
+  Placeholder images auto-hide their label the moment a real image loads, so
+  you just drop the file in. All asset paths are relative (work locally & on Pages).
+  ============================================================================
+-->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Olinda Bandeira — Urban Informatics</title>
+  <meta name="description" content="Olinda Bandeira — graduate student in Urban Informatics at Northeastern University. Turning complex data into clear insights for better policies and communities." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --font-head: "Montserrat", system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      --font-body: "Mulish", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+      --beige:   #D9D2C5;   /* warm greige section band (page bg) */
+      --white:   #FFFFFF;
+      --ink:     #0C0C0C;   /* heavy black headings          */
+      --body:    #2A2A2A;   /* body text                     */
+      --muted:   #5A5A55;   /* company / location / meta     */
+      --blue:    #2743FF;   /* electric cobalt accent        */
+      --blue-dk: #1B33D6;   /* hover / pressed               */
+      --line:    #CFC8BA;   /* subtle divider on beige       */
+      --card-sh: 0 18px 46px -22px rgba(0,0,0,.28);
+
+      --maxw: 1160px;
+      --pad: clamp(1.1rem, 5vw, 4rem);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      * { animation: none !important; transition: none !important; }
+    }
+
+    body {
+      margin: 0;
+      background: var(--beige);
+      color: var(--body);
+      font-family: var(--font-body);
+      font-size: 1.08rem;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { color: var(--blue-dk); }
+    :focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+
+    h1, h2, h3 { font-family: var(--font-head); color: var(--ink); margin: 0; line-height: 1.05; }
+
+    .wrap { width: 100%; max-width: var(--maxw); margin-inline: auto; padding-inline: var(--pad); }
+
+    /* small blue square marker */
+    .sq { display: inline-block; width: .72em; height: .72em; background: var(--blue); flex: none; }
+
+    /* ---------------- NAV ---------------- */
+    .nav {
+      position: sticky; top: 0; z-index: 60;
+      background: var(--white);
+      box-shadow: 0 1px 0 rgba(0,0,0,.06), 0 8px 24px -20px rgba(0,0,0,.35);
+    }
+    .nav .wrap { display: flex; align-items: center; justify-content: space-between; min-height: 88px; gap: 1rem; }
+    .brand { display: flex; align-items: center; gap: .6rem; color: var(--ink); }
+    .brand .sq { width: 18px; height: 18px; }
+    .brand .name { font-family: var(--font-head); font-weight: 800; font-size: clamp(1.15rem, 2.2vw, 1.7rem); letter-spacing: -.01em; }
+    .brand .slash { color: var(--ink); font-weight: 400; opacity: .55; margin-inline: .15rem; }
+    .brand .role { font-family: var(--font-head); font-weight: 500; letter-spacing: .06em; font-size: clamp(.72rem, 1.4vw, 1rem); color: #222; text-transform: uppercase; }
+
+    .nav-links { display: flex; align-items: center; gap: 2.2rem; list-style: none; margin: 0; padding: 0; }
+    .nav-links a {
+      color: var(--ink); font-family: var(--font-head); font-weight: 600;
+      font-size: .82rem; letter-spacing: .1em; text-transform: uppercase;
+    }
+    .nav-links a:hover { color: var(--blue); }
+    .nav-links a.active { color: var(--blue); }
+
+    .nav-toggle { display: none; background: none; border: 1.5px solid var(--ink); border-radius: 6px; padding: .45rem .55rem; cursor: pointer; color: var(--ink); }
+
+    /* ---------------- SECTIONS ---------------- */
+    section { padding-block: clamp(3.5rem, 8vw, 6.5rem); scroll-margin-top: 96px; }
+    .stitle { display: flex; align-items: center; justify-content: center; gap: .4em; text-align: center;
+      font-weight: 800; font-size: clamp(2.1rem, 5vw, 3.4rem); letter-spacing: -.01em; }
+    .stitle .sq { width: .62em; height: .62em; transform: translateY(.02em); }
+    .lead-center { max-width: 62ch; margin: 1.8rem auto 0; text-align: center; color: var(--body); font-size: 1.12rem; }
+
+    /* ---------------- HERO ---------------- */
+    .hero { padding-top: clamp(2.5rem, 6vw, 4.5rem); text-align: center; }
+    .portrait { position: relative; width: 210px; height: 210px; margin: 0 auto 1.8rem; border-radius: 50%; overflow: hidden; background: #C9C1B1; border: 1px solid var(--line); }
+    .portrait .ph-label { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; padding: 1rem; }
+    .portrait img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; z-index: 2; }
+    .hero h1 { font-weight: 900; font-size: clamp(2.6rem, 7vw, 4.6rem); letter-spacing: -.02em; }
+    .hero .role-line { font-family: var(--font-head); font-weight: 700; color: var(--blue); letter-spacing: .12em; text-transform: uppercase; font-size: clamp(.9rem, 1.8vw, 1.15rem); margin-top: .7rem; }
+    .socials { display: flex; justify-content: center; gap: .7rem; margin: 1.5rem 0; }
+    .socials a { width: 42px; height: 42px; border-radius: 50%; display: grid; place-items: center; background: var(--white); color: var(--ink); border: 1px solid var(--line); }
+    .socials a:hover { background: var(--blue); color: var(--white); border-color: var(--blue); }
+    .hero .tagline { font-family: var(--font-head); font-weight: 600; font-size: 1.25rem; color: var(--ink); margin: 0 0 1.4rem; }
+    .hero-actions { display: flex; gap: .9rem; justify-content: center; flex-wrap: wrap; }
+
+    /* ---------------- BUTTONS ---------------- */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      font-family: var(--font-head); font-weight: 700; font-size: .9rem;
+      letter-spacing: .07em; text-transform: uppercase;
+      padding: .95rem 2.1rem; border-radius: 999px; cursor: pointer;
+      background: var(--blue); color: var(--white); border: 2px solid var(--blue);
+      transition: background .18s ease, border-color .18s ease, color .18s ease;
+    }
+    .btn:hover { background: var(--blue-dk); border-color: var(--blue-dk); color: var(--white); }
+    .btn-outline { background: transparent; color: var(--ink); border-color: var(--ink); }
+    .btn-outline:hover { background: var(--ink); color: var(--white); }
+
+    /* ---------------- ABOUT ---------------- */
+    .about-copy { max-width: 68ch; margin: 2.2rem auto 0; }
+    .about-copy p { margin: 0 0 1.15rem; }
+    .chips { display: flex; flex-wrap: wrap; gap: .55rem; justify-content: center; margin: 2rem 0 0; padding: 0; list-style: none; }
+    .chips li { font-family: var(--font-head); font-weight: 600; font-size: .82rem; letter-spacing: .04em; color: var(--blue); background: var(--white); border: 1px solid var(--line); padding: .45rem .9rem; border-radius: 999px; }
+
+    /* ---------------- RÉSUMÉ ---------------- */
+    .exp-row { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; margin-top: 3rem; flex-wrap: wrap; }
+    .exp-row h3 { font-weight: 800; font-size: clamp(1.7rem, 4vw, 2.5rem); }
+    .rcard {
+      background: var(--white); box-shadow: var(--card-sh); margin-top: 1.8rem;
+      padding: clamp(1.6rem, 4vw, 2.8rem);
+      display: grid; grid-template-columns: 1fr 1.4fr; gap: clamp(1.5rem, 5vw, 4rem);
+    }
+    .ryears { font-family: var(--font-head); font-weight: 800; color: var(--blue); font-size: 1.3rem; margin: 0 0 .9rem; }
+    .rpos { font-family: var(--font-head); font-weight: 700; color: var(--ink); font-size: 1.15rem; letter-spacing: .02em; text-transform: uppercase; margin: 0; }
+    .rco { margin: .3rem 0 0; color: var(--body); }
+    .rloc { margin: 1rem 0 0; color: var(--muted); }
+    .rdesc p { margin: 0 0 1rem; }
+    .rdesc p:last-child { margin-bottom: 0; }
+
+    /* ---------------- PROJECTS ---------------- */
+    .pcard {
+      background: var(--white); box-shadow: var(--card-sh); margin-top: 2.2rem;
+      display: grid; grid-template-columns: 1fr 1fr; align-items: stretch; overflow: hidden;
+    }
+    .ptext { padding: clamp(1.8rem, 4vw, 3.2rem); display: flex; flex-direction: column; justify-content: center; }
+    .pname-wrap { border-left: 6px solid var(--blue); padding-left: 1.15rem; margin-bottom: 1.4rem; }
+    .pname { font-family: var(--font-head); font-weight: 800; color: var(--blue); font-size: clamp(1.4rem, 3vw, 1.95rem); }
+    .prole { font-family: var(--font-head); font-weight: 700; color: var(--ink); margin: .35rem 0 0; }
+    .ptext p.desc { margin: 0; color: var(--body); }
+    .pimg { position: relative; background: #BFB8A8; min-height: 300px; }
+    .pimg .ph-label { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; padding: 1rem; }
+    .pimg img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; z-index: 2; }
+
+    /* shared placeholder label text */
+    .ph-label { color: #6f6656; font-family: var(--font-head); font-weight: 600; font-size: .82rem; line-height: 1.5; }
+    .ph-label code { display: inline-block; margin-top: .35rem; font-family: ui-monospace, Menlo, Consolas, monospace; font-size: .74rem; color: var(--blue-dk); background: rgba(39,67,255,.10); padding: .12rem .45rem; border-radius: 5px; }
+
+    /* ---------------- CONTACT ---------------- */
+    .contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2.6rem; }
+    .ccard { background: var(--white); box-shadow: var(--card-sh); padding: 2.2rem 1.8rem; text-align: center; }
+    .ccard .clabel { font-family: var(--font-head); font-weight: 800; text-transform: uppercase; letter-spacing: .12em; font-size: .82rem; color: var(--ink); margin-bottom: .8rem; }
+    .ccard a, .ccard .cval { font-size: 1.08rem; font-weight: 600; color: var(--body); word-break: break-word; }
+    .ccard a:hover { color: var(--blue); }
+    .ccard .socials { margin: .2rem 0 0; }
+
+    /* ---------------- FOOTER ---------------- */
+    footer { background: var(--white); padding-block: 1.8rem; }
+    footer .wrap { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .5rem 1.5rem; }
+    footer small { color: var(--muted); font-family: var(--font-head); font-weight: 500; letter-spacing: .03em; }
+
+    /* ---------------- RESPONSIVE ---------------- */
+    @media (max-width: 860px) {
+      .rcard { grid-template-columns: 1fr; gap: 1.4rem; }
+      .pcard { grid-template-columns: 1fr; }
+      .pimg { min-height: 240px; order: 2; }
+      .ptext { order: 1; }
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 680px) {
+      .nav-toggle { display: inline-flex; }
+      .nav-links {
+        position: absolute; top: 88px; left: 0; right: 0; flex-direction: column;
+        gap: 0; align-items: stretch; background: var(--white); box-shadow: 0 12px 24px -12px rgba(0,0,0,.3);
+        max-height: 0; overflow: hidden; transition: max-height .25s ease;
+      }
+      .nav-links.open { max-height: 360px; }
+      .nav-links li { border-top: 1px solid var(--line); }
+      .nav-links a { display: block; padding: 1.05rem var(--pad); }
+      .brand .role, .brand .slash { display: none; }
+    }
+  </style>
+</head>
+
+<body id="top">
+  <!-- ============================ NAV ============================ -->
+  <header class="nav">
+    <div class="wrap">
+      <a class="brand" href="#top" aria-label="Olinda Bandeira — home">
+        <span class="sq" aria-hidden="true"></span>
+        <span class="name">Olinda Bandeira</span>
+        <span class="slash">/</span>
+        <span class="role">Urban Informatics</span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">About Me</a></li>
+        <li><a href="#resume">Resume</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============================ HERO / INTRO ============================ -->
+    <section class="hero" id="intro">
+      <div class="wrap">
+        <!-- ===== REPLACE: PORTRAIT =====
+             Drop your photo at  assets/olinda-portrait.jpg  (or change the src).
+             The label hides itself once the image loads. -->
+        <div class="portrait">
+          <span class="ph-label">Portrait<code>assets/olinda-portrait.jpg</code></span>
+          <img src="assets/pic_olinda.jpeg" alt="Portrait of Olinda Bandeira" onerror="this.remove()" />
+        </div>
+        <!-- ===== END REPLACE: PORTRAIT ===== -->
+
+        <h1>Olinda Bandeira</h1>
+        <p class="role-line">Urban Informatics · Northeastern University</p>
+
+        <!-- ===== OPTIONAL: social links — replace href="#" with real URLs, or delete ===== -->
+        <div class="socials" aria-label="Social links">
+          <a href="https://www.linkedin.com/in/olinda-bandeira-4373b6136" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.5 2.5 0 1 1 0 3.5a2.5 2.5 0 0 1 4.98 0zM.5 8h4V24h-4V8zm7.5 0h3.8v2.2h.06c.53-1 1.83-2.2 3.77-2.2 4.03 0 4.77 2.65 4.77 6.1V24h-4v-7.1c0-1.7-.03-3.88-2.36-3.88-2.36 0-2.72 1.84-2.72 3.75V24h-4V8z"/></svg></a>
+        </div>
+
+        <p class="tagline">Here's who I am &amp; what I do</p>
+        <div class="hero-actions">
+          <a class="btn" href="#resume">Resume</a>
+          <a class="btn btn-outline" href="#projects">Projects</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ ABOUT ============================ -->
+    <section id="about">
+      <div class="wrap">
+        <h2 class="stitle"><span class="sq" aria-hidden="true"></span>About</h2>
+        <div class="about-copy">
+          <p>I’m Olinda Bandeira, a graduate student in Urban Informatics at Northeastern University. Before moving into the world of urban data, I spent more than a decade working in banking, with a focus on auditing, risk, compliance, and internal controls.</p>
+          <p>My interest in Urban Informatics grew from a simple question: how can we use data not only to understand problems, but also to make better decisions? Through my studies, I’ve been building skills in data analysis, visualization, GIS, and statistical methods, applying them to real-world urban and community issues.</p>
+          <p>I enjoy turning complex data into clear, meaningful insights and exploring how those insights can support better policies, programs, and communities.</p>
+        </div>
+        <ul class="chips">
+          <li>Data analysis</li>
+          <li>Data visualization</li>
+          <li>GIS</li>
+          <li>Statistical methods</li>
+          <li>Audit &amp; internal controls</li>
+          <li>Risk &amp; compliance</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============================ RÉSUMÉ ============================ -->
+    <section id="resume">
+      <div class="wrap">
+        <h2 class="stitle"><span class="sq" aria-hidden="true"></span>Resume</h2>
+
+        <div class="exp-row">
+          <h3>Experience</h3>
+          <!-- ===== REPLACE: RÉSUMÉ FILE =====
+               Put the résumé at  assets/Olinda_Bandeira_CV_2026.pdf  (or change href/filename). -->
+          <a class="btn" href="assets/Olinda_Bandeira_CV_2026.pdf" download>Download CV</a>
+          <!-- ===== END REPLACE: RÉSUMÉ FILE ===== -->
+        </div>
+
+        <!-- ===== REPLACE: RÉSUMÉ ENTRY 1 (year / position / company / location / description) ===== -->
+        <div class="rcard">
+          <div class="rleft">
+            <p class="ryears">Jan 2026– Aug 2026</p>
+            <p class="rpos">Project Coordinator</p>
+            <p class="rco">Refugee Dream Center</p>
+            <p class="rloc">Providence, RI</p>
+          </div>
+          <div class="rdesc">
+            <p>Coordinate health education and outreach on blood pressure, nutrition, asthma, diabetes, and health care navigation. Collect, organize, and validate participation and service data in Salesforce and REDCap; identify duplicates and reconcile records. Summarize activity and service data for monitoring, evaluation, and grant reporting. Document referrals and case follow-up for refugees and immigrants accessing health care, housing, legal services, and benefits.</p>
+          </div>
+        </div>
+        <!-- ===== END REPLACE: RÉSUMÉ ENTRY 1 ===== -->
+
+        <!-- ===== REPLACE: RÉSUMÉ ENTRY 2 ===== -->
+        <div class="rcard">
+          <div class="rleft">
+            <p class="ryears">Dec 2023–Jan 2025</p>
+            <p class="rpos">Internal Auditor</p>
+            <p class="rco">MyBucks Banking Corporation, SA</p>
+            <p class="rloc">Maputo, Mozambique</p>
+          </div>
+          <div class="rdesc">
+            <p>Conducted operational, financial, and systems audits including risk mapping and control assessments. Analyzed audit evidence and policy data, documented control weaknesses, and presented recommendations to management to improve processes and reduce risk. Performed risk-based testing of compliance requirements.</p>
+          </div>
+        </div>
+        <!-- ===== END REPLACE: RÉSUMÉ ENTRY 2 ===== -->
+
+        <!-- ===== RÉSUMÉ ENTRY 3 ===== -->
+        <div class="rcard">
+          <div class="rleft">
+            <p class="ryears">Oct 2020–Mar 2022</p>
+            <p class="rpos">Risk and Internal Control, Project Coordinator</p>
+            <p class="rco">Insurance Company</p>
+            <p class="rloc">Maputo, Mozambique</p>
+          </div>
+          <div class="rdesc">
+            <p>Designed internal control tests and maintained risk and control matrices. Supported risk and control self-assessments and regulatory compliance reviews. Coordinated ISO 9001, ISO 27001, and ISO 22301 initiatives. Compiled risk and governance reporting for audit committees, external auditors, and regulators.</p>
+          </div>
+        </div>
+        <!-- ===== END RÉSUMÉ ENTRY 3 ===== -->
+
+        <!-- ===== RÉSUMÉ ENTRY 4 ===== -->
+        <div class="rcard">
+          <div class="rleft">
+            <p class="ryears">Aug 2012–Oct 2020</p>
+            <p class="rpos">Internal Auditor and Compliance Officer</p>
+            <p class="rco">Nedbank Mozambique, SA</p>
+            <p class="rloc">Maputo, Mozambique</p>
+          </div>
+          <div class="rdesc">
+            <p>Performed risk-based operational, financial, and compliance audits using COSO principles. Reviewed controls, systems, regulatory obligations, and fraud risks. Prepared audit workpapers and reports, analyzed exceptions and trends. Worked with managers on corrective actions and process improvements. Led cross-functional audit teams during organizational acquisitions.</p>
+          </div>
+        </div>
+        <!-- ===== END RÉSUMÉ ENTRY 4 ===== -->
+
+        <!-- To add more entries, copy one <div class="rcard">…</div> block above. -->
+      </div>
+    </section>
+
+    <!-- ============================ PROJECTS ============================ -->
+    <section id="projects">
+      <div class="wrap">
+        <h2 class="stitle"><span class="sq" aria-hidden="true"></span>Projects</h2>
+        <p class="lead-center">A selection of my work. Project details are coming soon — each card is a placeholder ready to be filled in.</p>
+
+        <!-- ===== REPLACE: PROJECT 1 (name / role / description / image: assets/project-1.jpg) ===== -->
+        <article class="pcard">
+          <div class="ptext">
+            <div class="pname-wrap">
+              <h3 class="pname">Community-Inspired Food Safety Metric</h3>
+              <p class="prole">Data Analyst & Urban Researcher</p>
+            </div>
+            <p class="desc">Developed a Complaint-to-Violation Ratio (CVR) metric to examine food safety disparities along Boston's Blue Hill Avenue corridor. By linking health inspection data (REI), 311 complaint reports, and neighborhood demographics (ACS), the project uncovers reporting gaps influenced by income, language barriers, and community knowledge—revealing how civic participation and public safety interact across neighborhoods.</p>
+          </div>
+          <div class="pimg">
+            <span class="ph-label">Project image<code>assets/map.png</code></span>
+            <img src="assets/map.png" alt="Blue Hill Avenue food safety violations map" onerror="this.remove()" />
+          </div>
+        </article>
+        <!-- ===== END REPLACE: PROJECT 1 ===== -->
+
+        <!-- ===== REPLACE: PROJECT 2 (image: assets/project-2.jpg) ===== -->
+        <article class="pcard">
+          <div class="ptext">
+            <div class="pname-wrap">
+              <h3 class="pname">Coffee Shop Competitive Mapping</h3>
+              <p class="prole">Geospatial Data Analyst</p>
+            </div>
+            <p class="desc">Analyzed Dunkin' Donuts and Starbucks distribution across eastern Massachusetts using Google Places API and demographic data from Social Explorer. Findings reveal Dunkin's "be everywhere" strategy dominates (80% of outlets) across all income levels, while Starbucks targets premium markets (median income ≈$90K). Competitive hotspots emerge in mid-income counties ($75K–$85K), informing strategic growth opportunities for both brands.</p>
+          </div>
+          <div class="pimg">
+            <span class="ph-label">Project image<code>assets/mapping.png</code></span>
+            <img src="assets/mapping.png" alt="Dunkin' Donuts and Starbucks distribution map" onerror="this.remove()" />
+          </div>
+        </article>
+        <!-- ===== END REPLACE: PROJECT 2 ===== -->
+
+        <!-- ===== REPLACE: PROJECT 3 (image: assets/project-3.jpg) ===== -->
+        <article class="pcard">
+          <div class="ptext">
+            <div class="pname-wrap">
+              <h3 class="pname">Flood Risk & Socioeconomic Vulnerability</h3>
+              <p class="prole">GIS Analyst & Policy Researcher</p>
+            </div>
+            <p class="desc">GIS analysis examining the intersection of flood risk and income inequality in Boston. The research maps climate vulnerabilities across neighborhoods, revealing disproportionate exposure in low-income communities lacking recovery resources. Policy recommendations prioritize resilience infrastructure, equitable resource allocation, and community engagement to support climate adaptation in the most vulnerable areas.</p>
+          </div>
+          <div class="pimg">
+            <span class="ph-label">Project image<code>assets/flood.png</code></span>
+            <img src="assets/flood.png" alt="Flood risk and socioeconomic vulnerability map of Boston" onerror="this.remove()" />
+          </div>
+        </article>
+        <!-- ===== END REPLACE: PROJECT 3 ===== -->
+
+        <!-- ===== REPLACE: PROJECT 4 (name / role / description / image: assets/Coop.png) ===== -->
+        <article class="pcard">
+          <div class="ptext">
+            <div class="pname-wrap">
+              <h3 class="pname">Refugee Dream Center</h3>
+              <p class="prole">Program Coordinator & Community Support</p>
+            </div>
+            <p class="desc">Supported planning, coordination, and implementation of community programs at RDC, a Providence-based nonprofit empowering refugees and immigrants. Strengthened data systems, coordinated health & safety initiatives, managed project timelines, organized community events and resource fairs, and facilitated food assistance programs to help families access essential services and resources.</p>
+          </div>
+          <div class="pimg">
+            <span class="ph-label">Project image<code>assets/Coop.png</code></span>
+            <img src="assets/Coop.png" alt="Refugee Dream Center community programs" onerror="this.remove()" />
+          </div>
+        </article>
+        <!-- ===== END REPLACE: PROJECT 4 ===== -->
+
+        <!-- To add more projects, copy one <article class="pcard">…</article> block above. -->
+      </div>
+    </section>
+
+    <!-- ============================ CONTACT ============================ -->
+    <section id="contact">
+      <div class="wrap">
+        <h2 class="stitle"><span class="sq" aria-hidden="true"></span>Contact</h2>
+        <div class="contact-grid">
+          <div class="ccard">
+            <div class="clabel">Call</div>
+            <a href="tel:+18574256412">+1 857 425 6412</a>
+          </div>
+          <div class="ccard">
+            <div class="clabel">Write</div>
+            <a href="mailto:bandeira.o@northeastern.edu">bandeira.o@northeastern.edu</a>
+          </div>
+          <div class="ccard">
+            <div class="clabel">Follow</div>
+            <!-- ===== OPTIONAL: replace href="#" with real profile URLs ===== -->
+            <div class="socials" aria-label="Social links">
+              <a href="https://www.linkedin.com/in/olinda-bandeira-4373b6136" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.5 2.5 0 1 1 0 3.5a2.5 2.5 0 0 1 4.98 0zM.5 8h4V24h-4V8zm7.5 0h3.8v2.2h.06c.53-1 1.83-2.2 3.77-2.2 4.03 0 4.77 2.65 4.77 6.1V24h-4v-7.1c0-1.7-.03-3.88-2.36-3.88-2.36 0-2.72 1.84-2.72 3.75V24h-4V8z"/></svg></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================ FOOTER ============================ -->
+  <footer>
+    <div class="wrap">
+      <small>© <span id="year">2025</span> Olinda Bandeira</small>
+      <small><a href="#top">Back to top</a></small>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Mobile menu
+    var toggle = document.getElementById("navToggle");
+    var links = document.getElementById("navLinks");
+    toggle.addEventListener("click", function () {
+      var open = links.classList.toggle("open");
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    });
+    links.querySelectorAll("a").forEach(function (a) {
+      a.addEventListener("click", function () {
+        links.classList.remove("open");
+        toggle.setAttribute("aria-expanded", "false");
+      });
+    });
+
+    // Active nav link on scroll
+    var map = {};
+    links.querySelectorAll("a").forEach(function (a) {
+      var id = a.getAttribute("href").slice(1);
+      if (id) map[id] = a;
+    });
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting && map[e.target.id]) {
+          Object.values(map).forEach(function (a) { a.classList.remove("active"); });
+          map[e.target.id].classList.add("active");
+        }
+      });
+    }, { rootMargin: "-45% 0px -50% 0px", threshold: 0 });
+    ["about", "resume", "projects", "contact"].forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) obs.observe(el);
+    });
+  </script>
+</body>
+</html>
