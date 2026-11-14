@@ -177,6 +177,12 @@
     .pimg img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; z-index: 2; }
 
     /* ---------------- AWARDS & CERTIFICATES ---------------- */
+    .award-eyebrow { display: inline-flex; align-items: center; gap: .5rem; align-self: flex-start; margin-bottom: 1.1rem; font-family: var(--font-head); font-weight: 800; font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: var(--white); background: var(--blue); padding: .4rem .85rem; border-radius: 999px; }
+    .award-eyebrow .sq { background: var(--white); }
+    .award-sub + .cert-grid { margin-top: 1.8rem; }
+    .pcard.award .pimg { order: -1; background: #14213A; min-height: 340px; }
+    .pcard.award .pimg img { object-fit: cover; }
+    .award-sub { font-family: var(--font-head); font-weight: 800; color: var(--ink); font-size: clamp(1.4rem, 3vw, 2rem); margin: 4rem 0 0; text-align: center; }
     .cert-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 2.6rem; }
     .cert { background: var(--white); box-shadow: var(--card-sh); display: flex; flex-direction: column; }
     .cert-img { display: block; background: #BFB8A8; aspect-ratio: 1000 / 576; overflow: hidden; }
@@ -209,7 +215,7 @@
     @media (max-width: 860px) {
       .rcard { grid-template-columns: 1fr; gap: 1.4rem; }
       .pcard { grid-template-columns: 1fr; }
-      .pimg { min-height: 240px; order: 2; }
+      .pimg, .pcard.award .pimg { min-height: 240px; order: 2; }
       .ptext { order: 1; }
       .contact-grid { grid-template-columns: 1fr; }
     }
@@ -462,8 +468,25 @@
     <section id="awards">
       <div class="wrap">
         <h2 class="stitle"><span class="sq" aria-hidden="true"></span>Awards &amp; Certificates</h2>
-        <p class="lead-center">DataCamp statements of accomplishment in R and SQL.</p>
+        <p class="lead-center">Recognition for my work, and certifications in R and SQL.</p>
 
+        <!-- Featured award: image left, text right (reuses the project card layout) -->
+        <article class="pcard award">
+          <div class="ptext">
+            <span class="award-eyebrow"><span class="sq" aria-hidden="true"></span>Award Winner</span>
+            <div class="pname-wrap">
+              <h3 class="pname">Graduate Award Winner</h3>
+              <p class="prole">10th Annual CSSH Co-op Expo</p>
+            </div>
+            <p class="desc">Received a Certificate of Excellence from Northeastern University's College of Social Sciences and Humanities as the graduate award winner at the 10th Annual CSSH Co-op Expo, presented on October 7, 2026.</p>
+            <p class="plink"><a href="assets/Coop%20Certificate_Olinda%20Bandeira,.pdf" target="_blank" rel="noopener">View certificate</a></p>
+          </div>
+          <a class="pimg" href="assets/Coop%20Certificate_Olinda%20Bandeira,.pdf" target="_blank" rel="noopener" aria-label="Open Certificate of Excellence (PDF)">
+            <img src="assets/certificates/cssh-coop-expo-award.jpg" alt="Certificate of Excellence: Graduate Award Winner at the 10th Annual CSSH Co-op Expo, Northeastern University" />
+          </a>
+        </article>
+
+        <h3 class="award-sub">Certificates</h3>
         <div class="cert-grid">
           <article class="cert">
             <a class="cert-img" href="assets/Data_%20Camp_Certificate_Introduction%20to.pdf" target="_blank" rel="noopener" aria-label="Open Introduction to R certificate (PDF)"><img src="assets/certificates/introduction-to-r.jpg" alt="DataCamp certificate: Introduction to R" loading="lazy" /></a>
