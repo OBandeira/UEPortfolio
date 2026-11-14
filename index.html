@@ -94,7 +94,7 @@
     .brand .slash { color: var(--ink); font-weight: 400; opacity: .55; margin-inline: .15rem; }
     .brand .role { font-family: var(--font-head); font-weight: 500; letter-spacing: .06em; font-size: clamp(.72rem, 1.4vw, 1rem); color: #222; text-transform: uppercase; }
 
-    .nav-links { display: flex; align-items: center; gap: 2.2rem; list-style: none; margin: 0; padding: 0; }
+    .nav-links { display: flex; align-items: center; gap: clamp(1.1rem, 2.4vw, 2.2rem); list-style: none; margin: 0; padding: 0; }
     .nav-links a {
       color: var(--ink); font-family: var(--font-head); font-weight: 600;
       font-size: .82rem; letter-spacing: .1em; text-transform: uppercase;
@@ -175,6 +175,18 @@
     .pimg .ph-label { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; padding: 1rem; }
     .pimg img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; z-index: 2; }
 
+    /* ---------------- AWARDS & CERTIFICATES ---------------- */
+    .cert-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 2.6rem; }
+    .cert { background: var(--white); box-shadow: var(--card-sh); display: flex; flex-direction: column; }
+    .cert-img { display: block; background: #BFB8A8; aspect-ratio: 1000 / 576; overflow: hidden; }
+    .cert-img img { width: 100%; height: 100%; object-fit: cover; }
+    .cert-body { padding: 1.4rem 1.6rem 1.7rem; }
+    .cert-name-wrap { border-left: 6px solid var(--blue); padding-left: 1rem; }
+    .cert-name { font-family: var(--font-head); font-weight: 800; color: var(--blue); font-size: clamp(1.05rem, 2vw, 1.3rem); line-height: 1.2; }
+    .cert-by { font-family: var(--font-head); font-weight: 700; color: var(--ink); font-size: .9rem; margin: .3rem 0 0; }
+    .cert-link { display: inline-block; margin: 1rem 0 0; font-family: var(--font-head); font-weight: 700; border-bottom: 2px solid var(--blue); }
+    .cert-link:hover { border-bottom-color: var(--blue-dk); }
+
     /* shared placeholder label text */
     .ph-label { color: #6f6656; font-family: var(--font-head); font-weight: 600; font-size: .82rem; line-height: 1.5; }
     .ph-label code { display: inline-block; margin-top: .35rem; font-family: ui-monospace, Menlo, Consolas, monospace; font-size: .74rem; color: var(--blue-dk); background: rgba(39,67,255,.10); padding: .12rem .45rem; border-radius: 5px; }
@@ -199,6 +211,9 @@
       .pimg { min-height: 240px; order: 2; }
       .ptext { order: 1; }
       .contact-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 560px) {
+      .cert-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 680px) {
       .nav-toggle { display: inline-flex; }
@@ -232,6 +247,7 @@
         <li><a href="#about">About Me</a></li>
         <li><a href="#resume">Resume</a></li>
         <li><a href="#projects">Projects</a></li>
+        <li><a href="#awards">Awards &amp; Certificates</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </div>
@@ -438,6 +454,149 @@
       </div>
     </section>
 
+    <!-- ============================ AWARDS & CERTIFICATES ============================ -->
+    <section id="awards">
+      <div class="wrap">
+        <h2 class="stitle"><span class="sq" aria-hidden="true"></span>Awards &amp; Certificates</h2>
+        <p class="lead-center">DataCamp statements of accomplishment in R and SQL.</p>
+
+        <div class="cert-grid">
+          <article class="cert">
+            <a class="cert-img" href="assets/Data_%20Camp_Certificate_Introduction%20to.pdf" target="_blank" rel="noopener" aria-label="Open Introduction to R certificate (PDF)"><img src="assets/certificates/introduction-to-r.jpg" alt="DataCamp certificate: Introduction to R" loading="lazy" /></a>
+            <div class="cert-body">
+              <div class="cert-name-wrap">
+                <h3 class="cert-name">Introduction to R</h3>
+                <p class="cert-by">DataCamp</p>
+              </div>
+              <a class="cert-link" href="assets/Data_%20Camp_Certificate_Introduction%20to.pdf" target="_blank" rel="noopener">View certificate</a>
+            </div>
+          </article>
+
+          <article class="cert">
+            <a class="cert-img" href="assets/Data_%20Camp_Certificate_Intermediate_R.pdf" target="_blank" rel="noopener" aria-label="Open Intermediate R certificate (PDF)"><img src="assets/certificates/intermediate-r.jpg" alt="DataCamp certificate: Intermediate R" loading="lazy" /></a>
+            <div class="cert-body">
+              <div class="cert-name-wrap">
+                <h3 class="cert-name">Intermediate R</h3>
+                <p class="cert-by">DataCamp</p>
+              </div>
+              <a class="cert-link" href="assets/Data_%20Camp_Certificate_Intermediate_R.pdf" target="_blank" rel="noopener">View certificate</a>
+            </div>
+          </article>
+
+          <article class="cert">
+            <a class="cert-img" href="assets/Data_%20Camp_Certificate_Introduction_to_the_Tidyverse.pdf" target="_blank" rel="noopener" aria-label="Open Introduction to the Tidyverse certificate (PDF)"><img src="assets/certificates/introduction-to-the-tidyverse.jpg" alt="DataCamp certificate: Introduction to the Tidyverse" loading="lazy" /></a>
+            <div class="cert-body">
+              <div class="cert-name-wrap">
+                <h3 class="cert-name">Introduction to the Tidyverse</h3>
+                <p class="cert-by">DataCamp</p>
+              </div>
+              <a class="cert-link" href="assets/Data_%20Camp_Certificate_Introduction_to_the_Tidyverse.pdf" target="_blank" rel="noopener">View certificate</a>
+            </div>
+          </article>
+
+          <article class="cert">
+            <a class="cert-img" href="assets/Data_%20Camp_Certificate_Data_Manipulation_with_DPLYR.pdf" target="_blank" rel="noopener" aria-label="Open Data Manipulation with dplyr certificate (PDF)"><img src="assets/certificates/data-manipulation-with-dplyr.jpg" alt="DataCamp certificate: Data Manipulation with dplyr" loading="lazy" /></a>
+            <div class="cert-body">
+              <div class="cert-name-wrap">
+                <h3 class="cert-name">Data Manipulation with dplyr</h3>
+                <p class="cert-by">DataCamp</p>
+              </div>
+              <a class="cert-link" href="assets/Data_%20Camp_Certificate_Data_Manipulation_with_DPLYR.pdf" target="_blank" rel="noopener">View certificate</a>
+            </div>
+          </article>
+
+          <article class="cert">
+            <a class="cert-img" href="assets/Data_%20Camp_Certificate_Data_Visualization_GGPLOT2.pdf" target="_blank" rel="noopener" aria-label="Open Data Visualization with ggplot2 certificate (PDF)"><img src="assets/certificates/data-visualization-with-ggplot2.jpg" alt="DataCamp certificate: Data Visualization with ggplot2" loading="lazy" /></a>
+            <div class="cert-body">
+              <div class="cert-name-wrap">
+                <h3 class="cert-name">Data Visualization with ggplot2</h3>
+                <p class="cert-by">DataCamp</p>
+              </div>
+              <a class="cert-link" href="assets/Data_%20Camp_Certificate_Data_Visualization_GGPLOT2.pdf" target="_blank" rel="noopener">View certificate</a>
+            </div>
+          </article>
+
+          <article class="cert">
+            <a class="cert-img" href="assets/Data_%20Camp_Certificate_Reshaping_Data_with_Tidyr.pdf" target="_blank" rel="noopener" aria-label="Open Reshaping Data with tidyr certificate (PDF)"><img src="assets/certificates/reshaping-data-with-tidyr.jpg" alt="DataCamp certificate: Reshaping Data with tidyr" loading="lazy" /></a>
+            <div class="cert-body">
+              <div class="cert-name-wrap">
+                <h3 class="cert-name">Reshaping Data with tidyr</h3>
+                <p class="cert-by">DataCamp</p>
+              </div>
+              <a class="cert-link" href="assets/Data_%20Camp_Certificate_Reshaping_Data_with_Tidyr.pdf" target="_blank" rel="noopener">View certificate</a>
+            </div>
+          </article>
+
+          <article class="cert">
+            <a class="cert-img" href="assets/Data_%20Camp_Certificate_String_Manipulation_with_stringr_in%20_R.pdf" target="_blank" rel="noopener" aria-label="Open String Manipulation with stringr in R certificate (PDF)"><img src="assets/certificates/string-manipulation-with-stringr.jpg" alt="DataCamp certificate: String Manipulation with stringr in R" loading="lazy" /></a>
+            <div class="cert-body">
+              <div class="cert-name-wrap">
+                <h3 class="cert-name">String Manipulation with stringr in R</h3>
+                <p class="cert-by">DataCamp</p>
+              </div>
+              <a class="cert-link" href="assets/Data_%20Camp_Certificate_String_Manipulation_with_stringr_in%20_R.pdf" target="_blank" rel="noopener">View certificate</a>
+            </div>
+          </article>
+
+          <article class="cert">
+            <a class="cert-img" href="assets/Data_%20Camp_Certificate_Intermediate_Regular_Expressions_in_R.pdf" target="_blank" rel="noopener" aria-label="Open Intermediate Regular Expressions in R certificate (PDF)"><img src="assets/certificates/intermediate-regular-expressions-in-r.jpg" alt="DataCamp certificate: Intermediate Regular Expressions in R" loading="lazy" /></a>
+            <div class="cert-body">
+              <div class="cert-name-wrap">
+                <h3 class="cert-name">Intermediate Regular Expressions in R</h3>
+                <p class="cert-by">DataCamp</p>
+              </div>
+              <a class="cert-link" href="assets/Data_%20Camp_Certificate_Intermediate_Regular_Expressions_in_R.pdf" target="_blank" rel="noopener">View certificate</a>
+            </div>
+          </article>
+
+          <article class="cert">
+            <a class="cert-img" href="assets/Data_%20Camp_Certificate_Introduction%20to%20Statistics%20in%20R.pdf" target="_blank" rel="noopener" aria-label="Open Introduction to Statistics in R certificate (PDF)"><img src="assets/certificates/introduction-to-statistics-in-r.jpg" alt="DataCamp certificate: Introduction to Statistics in R" loading="lazy" /></a>
+            <div class="cert-body">
+              <div class="cert-name-wrap">
+                <h3 class="cert-name">Introduction to Statistics in R</h3>
+                <p class="cert-by">DataCamp</p>
+              </div>
+              <a class="cert-link" href="assets/Data_%20Camp_Certificate_Introduction%20to%20Statistics%20in%20R.pdf" target="_blank" rel="noopener">View certificate</a>
+            </div>
+          </article>
+
+          <article class="cert">
+            <a class="cert-img" href="assets/Data_%20Camp_Certificate_Introduction_to_SQL.pdf" target="_blank" rel="noopener" aria-label="Open Introduction to SQL certificate (PDF)"><img src="assets/certificates/introduction-to-sql.jpg" alt="DataCamp certificate: Introduction to SQL" loading="lazy" /></a>
+            <div class="cert-body">
+              <div class="cert-name-wrap">
+                <h3 class="cert-name">Introduction to SQL</h3>
+                <p class="cert-by">DataCamp</p>
+              </div>
+              <a class="cert-link" href="assets/Data_%20Camp_Certificate_Introduction_to_SQL.pdf" target="_blank" rel="noopener">View certificate</a>
+            </div>
+          </article>
+
+          <article class="cert">
+            <a class="cert-img" href="assets/Data_%20Camp_Certificate_Intermediate_SQL.pdf" target="_blank" rel="noopener" aria-label="Open Intermediate SQL certificate (PDF)"><img src="assets/certificates/intermediate-sql.jpg" alt="DataCamp certificate: Intermediate SQL" loading="lazy" /></a>
+            <div class="cert-body">
+              <div class="cert-name-wrap">
+                <h3 class="cert-name">Intermediate SQL</h3>
+                <p class="cert-by">DataCamp</p>
+              </div>
+              <a class="cert-link" href="assets/Data_%20Camp_Certificate_Intermediate_SQL.pdf" target="_blank" rel="noopener">View certificate</a>
+            </div>
+          </article>
+
+          <article class="cert">
+            <a class="cert-img" href="assets/Data_%20Camp_Certificate_Reporting%20with%20R_MarkDown.pdf" target="_blank" rel="noopener" aria-label="Open Reporting with R Markdown certificate (PDF)"><img src="assets/certificates/reporting-with-r-markdown.jpg" alt="DataCamp certificate: Reporting with R Markdown" loading="lazy" /></a>
+            <div class="cert-body">
+              <div class="cert-name-wrap">
+                <h3 class="cert-name">Reporting with R Markdown</h3>
+                <p class="cert-by">DataCamp</p>
+              </div>
+              <a class="cert-link" href="assets/Data_%20Camp_Certificate_Reporting%20with%20R_MarkDown.pdf" target="_blank" rel="noopener">View certificate</a>
+            </div>
+          </article>
+        </div>
+        <!-- To add more, copy one <article class="cert">…</article> block above. -->
+      </div>
+    </section>
+
     <!-- ============================ CONTACT ============================ -->
     <section id="contact">
       <div class="wrap">
@@ -503,7 +662,7 @@
         }
       });
     }, { rootMargin: "-45% 0px -50% 0px", threshold: 0 });
-    ["about", "resume", "projects", "contact"].forEach(function (id) {
+    ["about", "resume", "projects", "awards", "contact"].forEach(function (id) {
       var el = document.getElementById(id);
       if (el) obs.observe(el);
     });
