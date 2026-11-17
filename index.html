@@ -161,6 +161,12 @@
     .rdesc p { margin: 0 0 1rem; }
     .rdesc p:last-child { margin-bottom: 0; }
 
+    /* ---------------- SKILLS ---------------- */
+    .skills-card { align-items: center; margin-top: 1.5rem; }
+    .skills-card:first-of-type { margin-top: 2.6rem; }
+    .skills-card .chips { justify-content: flex-start; margin: 0; }
+    .skills-card .chips li { white-space: normal; background: #F6F3EC; }
+
     /* ---------------- PROJECTS ---------------- */
     .pcard {
       background: var(--white); box-shadow: var(--card-sh); margin-top: 2.2rem;
@@ -391,6 +397,48 @@
         <!-- ===== END RÉSUMÉ ENTRY 4 ===== -->
 
         <!-- To add more entries, copy one <div class="rcard">…</div> block above. -->
+      </div>
+    </section>
+
+    <!-- ============================ SKILLS ============================ -->
+    <section id="skills">
+      <div class="wrap">
+        <h2 class="stitle"><span class="sq" aria-hidden="true"></span>Technical and Professional Skills</h2>
+
+        <div class="rcard skills-card">
+          <div class="pname-wrap"><h3 class="pname">Data and GIS</h3></div>
+          <ul class="chips">
+            <li>R and RStudio</li>
+            <li>Excel</li>
+            <li>Tableau</li>
+            <li>ArcGIS Pro</li>
+            <li>QGIS</li>
+            <li>NetLogo</li>
+            <li>Data cleaning, analysis, visualization, and reporting</li>
+          </ul>
+        </div>
+
+        <div class="rcard skills-card">
+          <div class="pname-wrap"><h3 class="pname">Program Data</h3></div>
+          <ul class="chips">
+            <li>Salesforce</li>
+            <li>REDCap</li>
+          </ul>
+        </div>
+
+        <div class="rcard skills-card">
+          <div class="pname-wrap"><h3 class="pname">Risk and Governance</h3></div>
+          <ul class="chips">
+            <li>Internal audit</li>
+            <li>COSO</li>
+            <li>RCSA</li>
+            <li>Risk and control matrices</li>
+            <li>Compliance</li>
+            <li>ISO 9001</li>
+            <li>ISO 27001</li>
+            <li>ISO 22301</li>
+          </ul>
+        </div>
       </div>
     </section>
 
