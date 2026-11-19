@@ -155,28 +155,21 @@
       padding: var(--rpad);
       display: grid; grid-template-columns: 1fr 1.4fr; gap: clamp(1.5rem, 5vw, 4rem);
     }
-    /* timeline: a centre line runs down the middle; cards alternate left/right, dates on the opposite side */
-    :root { --tl-gap: 4rem; }
-    .rcard { position: relative; width: calc(50% - var(--tl-gap) / 2); grid-template-columns: 1fr; gap: 1.4rem; }
-    .rcard:nth-of-type(odd) { margin-left: auto; }
-    .rcard .ryears { position: absolute; top: var(--rpad); margin: 0; width: 100%; line-height: 1.3; }
-    .rcard:nth-of-type(even) .ryears { left: calc(100% + var(--tl-gap)); text-align: left; }
-    .rcard:nth-of-type(odd) .ryears { right: calc(100% + var(--tl-gap)); text-align: right; }
+    /* timeline: full-width cards joined by a centre line, with a dot where each card begins */
+    :root { --tl-gap: 3rem; }
+    .rcard { position: relative; margin-top: var(--tl-gap); }
+    .exp-row + .rcard { margin-top: 2.4rem; }
     .rcard::before {
-      content: ""; position: absolute; top: calc(var(--rpad) + .65rem);
-      width: 4px; height: calc(100% + 1.8rem); background: linear-gradient(var(--blue), var(--blue-dk));
+      content: ""; position: absolute; left: calc(50% - 2px); bottom: 100%;
+      width: 4px; height: var(--tl-gap); background: linear-gradient(var(--blue), var(--blue-dk));
       border-radius: 2px; opacity: .85;
     }
+    .exp-row + .rcard::before { display: none; }
     .rcard::after {
-      content: ""; position: absolute; top: calc(var(--rpad) + .65rem - 8px);
+      content: ""; position: absolute; left: calc(50% - 10px); top: -10px;
       width: 20px; height: 20px; box-sizing: border-box; border-radius: 50%;
       background: var(--white); border: 4px solid var(--blue); box-shadow: 0 0 0 5px var(--beige);
     }
-    .rcard:nth-of-type(even)::before { left: calc(100% + var(--tl-gap) / 2 - 2px); }
-    .rcard:nth-of-type(even)::after  { left: calc(100% + var(--tl-gap) / 2 - 10px); }
-    .rcard:nth-of-type(odd)::before  { left: calc(-1 * var(--tl-gap) / 2 - 2px); }
-    .rcard:nth-of-type(odd)::after   { left: calc(-1 * var(--tl-gap) / 2 - 10px); }
-    .rcard:last-child::before { display: none; }
     .exp-row + .rcard::after { background: var(--blue); }
     .ryears { font-family: var(--font-head); font-weight: 800; color: var(--blue); font-size: 1.3rem; margin: 0 0 .9rem; }
     .rpos { font-family: var(--font-head); font-weight: 700; color: var(--ink); font-size: 1.15rem; letter-spacing: .02em; text-transform: uppercase; margin: 0; }
@@ -271,11 +264,7 @@
 
     /* ---------------- RESPONSIVE ---------------- */
     @media (max-width: 860px) {
-      :root { --tl-gap: 2.2rem; }
-      .rcard, .rcard:nth-of-type(odd) { width: auto; margin-left: var(--tl-gap); }
-      .rcard:nth-of-type(n) .ryears { position: static; width: auto; text-align: left; margin: 0 0 .9rem; }
-      .rcard:nth-of-type(n)::before { left: calc(-1 * var(--tl-gap) / 2 - 2px); }
-      .rcard:nth-of-type(n)::after  { left: calc(-1 * var(--tl-gap) / 2 - 10px); }
+      .rcard { grid-template-columns: 1fr; gap: 1.4rem; }
       .pcard { grid-template-columns: 1fr; }
       .pimg { min-height: 240px; order: 2; }
       .award-banner { grid-template-columns: 1fr; }
