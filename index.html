@@ -155,16 +155,18 @@
       padding: var(--rpad);
       display: grid; grid-template-columns: 1fr 1.4fr; gap: clamp(1.5rem, 5vw, 4rem);
     }
-    /* timeline: a vertical line runs card-to-card, with a dot beside each year */
-    .rcard { position: relative; margin-left: clamp(1.9rem, 5vw, 3rem); }
+    /* timeline: dates sit on the left, a vertical line runs card-to-card, cards on the right */
+    :root { --tl-date: 11rem; --tl-gap: 3.4rem; }
+    .rcard { position: relative; margin-left: calc(var(--tl-date) + var(--tl-gap)); }
+    .rcard .ryears { position: absolute; right: calc(100% + var(--tl-gap)); width: var(--tl-date); top: var(--rpad); margin: 0; text-align: right; line-height: 1.3; }
     .rcard::before {
-      content: ""; position: absolute; left: calc(-1 * clamp(1.9rem, 5vw, 3rem) / 2 - 2px); top: calc(var(--rpad) + .85rem);
+      content: ""; position: absolute; left: calc(-1 * var(--tl-gap) / 2 - 2px); top: calc(var(--rpad) + .65rem);
       width: 4px; height: calc(100% + 1.8rem); background: linear-gradient(var(--blue), var(--blue-dk));
       border-radius: 2px; opacity: .85;
     }
     .rcard:last-child::before { display: none; }
     .rcard::after {
-      content: ""; position: absolute; left: calc(-1 * clamp(1.9rem, 5vw, 3rem) / 2 - 10px); top: calc(var(--rpad) + .85rem - 10px);
+      content: ""; position: absolute; left: calc(-1 * var(--tl-gap) / 2 - 10px); top: calc(var(--rpad) + .65rem - 8px);
       width: 20px; height: 20px; box-sizing: border-box; border-radius: 50%;
       background: var(--white); border: 4px solid var(--blue); box-shadow: 0 0 0 5px var(--beige);
     }
@@ -263,6 +265,9 @@
     /* ---------------- RESPONSIVE ---------------- */
     @media (max-width: 860px) {
       .rcard { grid-template-columns: 1fr; gap: 1.4rem; }
+      :root { --tl-date: 0rem; --tl-gap: 2.2rem; }
+      .rcard { margin-left: var(--tl-gap); }
+      .rcard .ryears { position: static; width: auto; text-align: left; margin: 0 0 .9rem; }
       .pcard { grid-template-columns: 1fr; }
       .pimg { min-height: 240px; order: 2; }
       .award-banner { grid-template-columns: 1fr; }
