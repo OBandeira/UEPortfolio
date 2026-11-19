@@ -209,12 +209,13 @@
     #awards .carousel { max-width: 760px; margin-inline: auto; }
 
     /* ---------------- SKILLS ---------------- */
-    .skills-group { margin-top: 2.4rem; text-align: center; }
-    .skills-group:first-of-type { margin-top: 2.8rem; }
-    .skills-title { font-weight: 800; font-size: clamp(1.15rem, 2.4vw, 1.4rem); }
-    .skills-group .tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem 1rem; max-width: 900px; margin: 1.4rem auto 0; padding: 0; list-style: none; }
-    .tags li { background: var(--white); color: var(--ink); font-size: 1.05rem; padding: .55rem 1rem; box-shadow: var(--card-sh); }
+    .skills-group { margin-top: 1.5rem; text-align: center; }
+    .skills-group:first-of-type { margin-top: 1.8rem; }
+    .skills-title { font-weight: 800; font-size: clamp(1rem, 2vw, 1.2rem); }
+    .skills-group .tags { display: flex; flex-wrap: wrap; justify-content: center; gap: .6rem; max-width: 820px; margin: .9rem auto 0; padding: 0; list-style: none; }
+    .tags li { background: var(--white); color: var(--ink); font-size: .92rem; padding: .4rem .8rem; box-shadow: 0 8px 18px -12px rgba(0,0,0,.3); }
 
+    #skills { padding-block: clamp(1.2rem, 3vw, 2.2rem); }
     /* ---------------- PROJECTS ---------------- */
     .pcard {
       background: var(--white); box-shadow: var(--card-sh); margin-top: 2.2rem;
@@ -233,17 +234,17 @@
     .pimg img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; z-index: 2; }
 
     /* ---------------- AWARDS & CERTIFICATES ---------------- */
-    .award-eyebrow { display: inline-flex; align-items: center; gap: .5rem; align-self: flex-start; margin-bottom: 1.1rem; font-family: var(--font-head); font-weight: 800; font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: var(--white); background: var(--blue); padding: .4rem .85rem; border-radius: 999px; }
+    .award-eyebrow { display: inline-flex; align-items: center; gap: .5rem; align-self: center; margin-bottom: .9rem; font-family: var(--font-head); font-weight: 800; font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: var(--white); background: var(--blue); padding: .4rem .85rem; border-radius: 999px; }
     .award-eyebrow .sq { background: var(--white); }
     .subtitle { display: flex; align-items: center; justify-content: center; gap: .4em; text-align: center; font-weight: 800; font-size: clamp(1.6rem, 3.4vw, 2.3rem); margin-top: clamp(3rem, 6vw, 4.5rem); }
     .subtitle .sq { width: .6em; height: .6em; }
-    .subtitle + .award-banner { margin-top: 1.8rem; }
-    .award-banner { margin-top: 1.5rem; background: var(--ink); box-shadow: var(--card-sh); display: grid; grid-template-columns: 1.15fr 1fr; align-items: center; gap: clamp(1.5rem, 4vw, 3.2rem); padding: clamp(1.3rem, 3vw, 2.4rem); }
+    .subtitle + .award-banner { margin-top: 1.4rem; }
+    .award-banner { max-width: 820px; margin: 1.5rem auto 0; background: var(--ink); box-shadow: var(--card-sh); display: grid; grid-template-columns: 1.15fr 1fr; align-items: center; gap: clamp(1.2rem, 3vw, 2.2rem); padding: clamp(1.1rem, 2.4vw, 1.8rem); }
     .award-img { display: block; }
     .award-img img { width: 100%; height: auto; box-shadow: 0 16px 34px -14px rgba(0,0,0,.7); }
-    .award-copy { display: flex; flex-direction: column; align-items: flex-start; }
-    .award-title { color: var(--white); font-weight: 900; font-size: clamp(1.9rem, 4vw, 2.9rem); letter-spacing: -.01em; }
-    .award-meta { margin: 1rem 0 1.8rem; color: var(--beige); font-family: var(--font-head); font-weight: 600; line-height: 1.6; }
+    .award-copy { display: flex; flex-direction: column; align-items: center; text-align: center; }
+    .award-title { color: var(--white); font-weight: 900; font-size: clamp(1.5rem, 3vw, 2.1rem); letter-spacing: -.01em; }
+    .award-meta { margin: .8rem 0 1.4rem; color: var(--beige); font-family: var(--font-head); font-weight: 600; line-height: 1.6; }
     .cert { flex: 0 0 100%; scroll-snap-align: start; background: var(--white); box-shadow: var(--card-sh); display: flex; flex-direction: column; }
     .cert-img { display: block; background: #BFB8A8; aspect-ratio: 1000 / 576; overflow: hidden; }
     .cert-img img { width: 100%; height: 100%; object-fit: cover; }
