@@ -151,9 +151,11 @@
     .btn-outline:hover { background: var(--blue); border-color: var(--blue); color: var(--white); }
 
     /* ---------------- ABOUT ---------------- */
-    .about-copy { max-width: 68ch; margin: 2.2rem auto 0; }
-    .about-copy p { margin: 0 0 1.15rem; }
-    .chips { display: flex; flex-wrap: wrap; gap: .5rem; justify-content: center; margin: 2rem 0 0; padding: 0; list-style: none; }
+    .about-copy { max-width: 68ch; margin: 1.4rem auto 0; text-align: center; font-size: 1.02rem; line-height: 1.6; }
+    .about-copy .ilink { white-space: nowrap; }
+    .about-copy p { margin: 0 0 .85rem; }
+    .about-copy p:last-child { margin-bottom: 0; }
+    .chips { display: flex; flex-wrap: wrap; gap: .5rem; justify-content: center; margin: 1.5rem auto 0; max-width: 980px; padding: 0; list-style: none; }
     .chips li { font-family: var(--font-head); font-weight: 600; font-size: .74rem; letter-spacing: .03em; white-space: nowrap; color: var(--blue); background: var(--white); border: 1px solid var(--line); padding: .42rem .8rem; border-radius: 999px; }
 
     /* ---------------- RÉSUMÉ ---------------- */
@@ -190,6 +192,9 @@
     .ilink:hover { color: var(--blue); }
     .ilink.nu { color: var(--blue); font-weight: 700; }
     .ilink.nu:hover { color: #C8102E; }
+    .nu-link { display: inline-flex; align-items: center; gap: .55em; vertical-align: middle; }
+    .nu-badge { display: block; height: 1.7em; width: auto; border-radius: 4px; }
+    .nu-link:hover .ilink.nu { color: #C8102E; }
     .rloc { margin: 1rem 0 0; color: var(--muted); display: flex; align-items: center; gap: .45rem; }
     .rloc::before {
       content: ""; flex: none; width: 1.05em; height: 1.05em; background: var(--blue);
@@ -362,7 +367,7 @@
         <!-- ===== END REPLACE: PORTRAIT ===== -->
 
         <h1>Olinda Bandeira</h1>
-        <p class="role-line">Urban Informatics · <a class="ilink nu" href="https://www.northeastern.edu" target="_blank" rel="noopener">Northeastern University</a></p>
+        <p class="role-line">Urban Informatics · <a class="nu-link" href="https://www.northeastern.edu" target="_blank" rel="noopener"><img class="nu-badge" src="assets/nu-badge.png" alt="" width="29" height="24" /><span class="ilink nu">Northeastern University</span></a></p>
 
         <!-- ===== OPTIONAL: social links — replace href="#" with real URLs, or delete ===== -->
         <div class="socials" aria-label="Social links">
