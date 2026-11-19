@@ -109,11 +109,14 @@
     section { padding-block: clamp(2rem, 4.5vw, 3.5rem); scroll-margin-top: 96px; }
     #awards { padding-bottom: clamp(1.5rem, 3vw, 2.5rem); }
     #contact {
-      padding-top: clamp(2rem, 4vw, 3.5rem); padding-bottom: clamp(5rem, 13vw, 9.5rem); color: var(--white); background-color: var(--ink);
+      padding-top: clamp(1.2rem, 3vw, 2.2rem); padding-bottom: clamp(2.2rem, 5vw, 3.6rem); color: var(--white); background-color: var(--ink);
       background: linear-gradient(rgba(8,10,24,.55), rgba(8,10,24,.7)), url("assets/contact-bg.png") center / cover no-repeat;
     }
     #contact::before { background: var(--white); }
     #contact .stitle { color: var(--white); }
+    #contact::before { margin-bottom: clamp(1rem, 2.5vw, 1.6rem); }
+    #contact .contact-grid { margin-top: 1.6rem; }
+    #contact .ccard { padding: 1.4rem 1.4rem; }
     /* short blue divider that opens each section after the hero, so readers can see where one ends and the next begins */
     section + section::before { content: ""; display: block; width: 72px; height: 4px; margin: 0 auto clamp(1.6rem, 3.5vw, 2.4rem); background: var(--ink); border-radius: 2px; }
     .stitle { display: flex; align-items: center; justify-content: center; gap: .4em; text-align: center;
