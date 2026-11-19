@@ -148,6 +148,7 @@
 
     /* ---------------- RÉSUMÉ ---------------- */
     .exp-row { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; margin-top: 3rem; flex-wrap: wrap; }
+    .cv-row { display: flex; justify-content: center; margin-top: 2rem; }
     .exp-row h3 { font-weight: 800; font-size: clamp(1.7rem, 4vw, 2.5rem); }
     :root { --rpad: clamp(1.6rem, 4vw, 2.8rem); }
     .rcard {
@@ -169,12 +170,14 @@
     .rcard::after {
       content: ""; position: absolute; z-index: 2; left: calc(var(--tl-x) - 10px); top: calc(var(--tl-dot) - 10px);
       width: 20px; height: 20px; box-sizing: border-box; border-radius: 50%;
-      background: var(--white); border: 4px solid var(--blue); box-shadow: 0 0 0 5px var(--white);
+      background: var(--ink); border: 4px solid var(--blue); box-shadow: 0 0 0 5px var(--white);
     }
     .exp-row + .rcard::after { background: var(--blue); }
     .ryears { font-family: var(--font-head); font-weight: 800; color: var(--blue); font-size: 1.3rem; margin: 0 0 .9rem; }
     .rpos { font-family: var(--font-head); font-weight: 700; color: var(--ink); font-size: 1.15rem; letter-spacing: .02em; text-transform: uppercase; margin: 0; }
     .rco { margin: .3rem 0 0; color: var(--body); }
+    .ilink { color: inherit; border-bottom: 1px solid currentColor; }
+    .ilink:hover { color: var(--blue); }
     .rloc { margin: 1rem 0 0; color: var(--muted); display: flex; align-items: center; gap: .45rem; }
     .rloc::before {
       content: ""; flex: none; width: 1.05em; height: 1.05em; background: var(--blue);
@@ -337,7 +340,7 @@
         <!-- ===== END REPLACE: PORTRAIT ===== -->
 
         <h1>Olinda Bandeira</h1>
-        <p class="role-line">Urban Informatics · Northeastern University</p>
+        <p class="role-line">Urban Informatics · <a class="ilink" href="https://www.northeastern.edu" target="_blank" rel="noopener">Northeastern University</a></p>
 
         <!-- ===== OPTIONAL: social links — replace href="#" with real URLs, or delete ===== -->
         <div class="socials" aria-label="Social links">
@@ -357,7 +360,7 @@
       <div class="wrap">
         <h2 class="stitle"><span class="sq" aria-hidden="true"></span>About</h2>
         <div class="about-copy">
-          <p>I’m Olinda Bandeira, a graduate student in Urban Informatics at Northeastern University. Before moving into the world of urban data, I spent more than a decade working in banking, with a focus on auditing, risk, compliance, and internal controls.</p>
+          <p>I’m Olinda Bandeira, a graduate student in Urban Informatics at <a class="ilink" href="https://www.northeastern.edu" target="_blank" rel="noopener">Northeastern University</a>. Before moving into the world of urban data, I spent more than a decade working in banking, with a focus on auditing, risk, compliance, and internal controls.</p>
           <p>My interest in Urban Informatics grew from a simple question: how can we use data not only to understand problems, but also to make better decisions? Through my studies, I’ve been building skills in data analysis, visualization, GIS, and statistical methods, applying them to real-world urban and community issues.</p>
           <p>I enjoy turning complex data into clear, meaningful insights and exploring how those insights can support better policies, programs, and communities.</p>
         </div>
@@ -377,13 +380,13 @@
     <section id="resume">
       <div class="wrap">
         <h2 class="stitle"><span class="sq" aria-hidden="true"></span>Resume</h2>
+        <!-- ===== REPLACE: RÉSUMÉ FILE =====
+             Put the résumé at  assets/Olinda_Bandeira_CV_2026.pdf  (or change href/filename). -->
+        <div class="cv-row"><a class="btn" href="assets/Olinda_Bandeira_CV_2026.pdf" download>Download CV</a></div>
+        <!-- ===== END REPLACE: RÉSUMÉ FILE ===== -->
 
         <div class="exp-row">
           <h3>Experience</h3>
-          <!-- ===== REPLACE: RÉSUMÉ FILE =====
-               Put the résumé at  assets/Olinda_Bandeira_CV_2026.pdf  (or change href/filename). -->
-          <a class="btn" href="assets/Olinda_Bandeira_CV_2026.pdf" download>Download CV</a>
-          <!-- ===== END REPLACE: RÉSUMÉ FILE ===== -->
         </div>
 
         <!-- ===== REPLACE: RÉSUMÉ ENTRY 1 (year / position / company / location / description) ===== -->
@@ -391,7 +394,7 @@
           <div class="rleft">
             <p class="ryears">Jan 2026– Aug 2026</p>
             <p class="rpos">Project Coordinator</p>
-            <p class="rco">Refugee Dream Center</p>
+            <p class="rco"><a class="ilink" href="https://refugeedreamcenter.org" target="_blank" rel="noopener">Refugee Dream Center</a></p>
             <p class="rloc">Providence, RI</p>
           </div>
           <div class="rdesc">
@@ -405,7 +408,7 @@
           <div class="rleft">
             <p class="ryears">Dec 2023–Jan 2025</p>
             <p class="rpos">Internal Auditor</p>
-            <p class="rco">MyBucks Banking Corporation, SA</p>
+            <p class="rco"><a class="ilink" href="https://mybucks.co.mz" target="_blank" rel="noopener">MyBucks Banking Corporation, SA</a></p>
             <p class="rloc">Maputo, Mozambique</p>
           </div>
           <div class="rdesc">
@@ -419,7 +422,7 @@
           <div class="rleft">
             <p class="ryears">Oct 2020–Mar 2022</p>
             <p class="rpos">Risk and Internal Control, Project Coordinator</p>
-            <p class="rco">Insurance Company</p>
+            <p class="rco"><a class="ilink" href="https://www.indicoseguros.co.mz" target="_blank" rel="noopener">Indico Seguros</a></p>
             <p class="rloc">Maputo, Mozambique</p>
           </div>
           <div class="rdesc">
@@ -433,7 +436,7 @@
           <div class="rleft">
             <p class="ryears">Aug 2012–Oct 2020</p>
             <p class="rpos">Internal Auditor and Compliance Officer</p>
-            <p class="rco">Nedbank Mozambique, SA</p>
+            <p class="rco"><a class="ilink" href="https://www.nedbank.co.mz" target="_blank" rel="noopener">Nedbank Mozambique, SA</a></p>
             <p class="rloc">Maputo, Mozambique</p>
           </div>
           <div class="rdesc">
