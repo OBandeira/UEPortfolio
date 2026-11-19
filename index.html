@@ -175,7 +175,12 @@
     .ryears { font-family: var(--font-head); font-weight: 800; color: var(--blue); font-size: 1.3rem; margin: 0 0 .9rem; }
     .rpos { font-family: var(--font-head); font-weight: 700; color: var(--ink); font-size: 1.15rem; letter-spacing: .02em; text-transform: uppercase; margin: 0; }
     .rco { margin: .3rem 0 0; color: var(--body); }
-    .rloc { margin: 1rem 0 0; color: var(--muted); }
+    .rloc { margin: 1rem 0 0; color: var(--muted); display: flex; align-items: center; gap: .45rem; }
+    .rloc::before {
+      content: ""; flex: none; width: 1.05em; height: 1.05em; background: var(--blue);
+      -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z'/%3E%3C/svg%3E") center / contain no-repeat;
+      mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z'/%3E%3C/svg%3E") center / contain no-repeat;
+    }
     .rdesc p { margin: 0 0 1rem; }
     .rdesc p:last-child { margin-bottom: 0; }
 
