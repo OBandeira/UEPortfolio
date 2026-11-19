@@ -152,7 +152,7 @@
 
     /* ---------------- ABOUT ---------------- */
     .about-copy { max-width: 68ch; margin: 2.2rem auto 0; }
-    .about-copy p { margin: 0 0 1.15rem; }
+    .about-copy p { margin: 0 0 1.15rem; text-align: justify; hyphens: auto; }
     .chips { display: flex; flex-wrap: wrap; gap: .5rem; justify-content: center; margin: 2rem 0 0; padding: 0; list-style: none; }
     .chips li { font-family: var(--font-head); font-weight: 600; font-size: .74rem; letter-spacing: .03em; white-space: nowrap; color: var(--blue); background: var(--white); border: 1px solid var(--line); padding: .42rem .8rem; border-radius: 999px; }
 
@@ -259,6 +259,11 @@
     .wp-list ul { list-style: none; margin: 1.2rem 0 0; padding: clamp(1.1rem, 3vw, 1.8rem); background: var(--white); box-shadow: var(--card-sh); text-align: left; columns: 2; column-gap: 2.4rem; }
     .wp-list li { break-inside: avoid; padding: .45rem 0; border-bottom: 1px solid var(--line); }
     .wp-list li a:hover { color: var(--blue); }
+    .li-links { display: flex; gap: 1rem; margin-top: .2rem; }
+    .li-links a { font-weight: 700; color: var(--blue); }
+    .btn-light { background: var(--white); color: var(--ink); border-color: var(--white); }
+    .btn-light:hover { background: var(--ink); border-color: var(--ink); color: var(--white); }
+    #canvaList { margin-top: .8rem; }
     @media (max-width: 640px) { .wp-list ul { columns: 1; } }
     .award-img { display: block; }
     .award-img img { width: 100%; height: auto; box-shadow: 0 16px 34px -14px rgba(0,0,0,.7); }
@@ -552,7 +557,8 @@
         <p class="lead-center">More of my work lives on these external sites.</p>
         <div class="hero-actions other-projects">
           <a class="btn btn-outline" href="https://public.tableau.com/app/profile/olinda.bandeira" target="_blank" rel="noopener">Tableau</a>
-          <button class="btn wp-toggle" type="button" aria-expanded="false" aria-controls="wpList">WordPress projects</button>
+          <button class="btn wp-toggle" type="button" data-toggle="wpList" aria-expanded="false" aria-controls="wpList">WordPress projects</button>
+          <button class="btn btn-light wp-toggle" type="button" data-toggle="canvaList" aria-expanded="false" aria-controls="canvaList">Canva presentations</button>
         </div>
         <div class="wp-list" id="wpList" hidden>
           <ul>
@@ -565,6 +571,15 @@
             <li><a href="https://sppua5262.wordpress.com/2025/10/01/city-exploration-walk-memo-food-safety-and-sanitation-in-roxbury/" target="_blank" rel="noopener">City Exploration Walk Memo: Food Safety and Sanitation in Roxbury</a></li>
             <li><a href="https://sppua5262.wordpress.com/2025/09/24/restaurants-inspections-in-boston-at-roxbury/" target="_blank" rel="noopener">Restaurant Inspections - Pulse of the City</a></li>
             <li><a href="https://sppua5262.wordpress.com/2025/09/17/restaurant-inspections/" target="_blank" rel="noopener">Restaurant Inspections - Data Story</a></li>
+          </ul>
+        </div>
+        <div class="wp-list" id="canvaList" hidden>
+          <ul>
+            <li><a href="https://canva.link/0p6iem3t5hnh1i3" target="_blank" rel="noopener">Monarch Butterfly</a></li>
+            <li><a href="https://canva.link/lfgtbvjcjgs4ayn" target="_blank" rel="noopener">Prices Comparisons in Boston</a></li>
+            <li>Comparison of List Price and Amazon data<span class="li-links"><a href="https://canva.link/49zzfduqw9m1i9c" target="_blank" rel="noopener">Infographic</a><a href="https://canva.link/ax9ek22hpqgu6qi" target="_blank" rel="noopener">Presentation</a></span></li>
+            <li><a href="https://canva.link/ya6bsxhzc9v5q5h" target="_blank" rel="noopener">Playlist Genre Comparison (full paper)</a></li>
+            <li><a href="https://www.canva.com/design/DAGjFJ2f2Hg/z83nAHLVWZjxzAdldza_Wg/view" target="_blank" rel="noopener">Word Tree representation</a></li>
           </ul>
         </div>
       </div>
@@ -846,16 +861,16 @@
       if (el) obs.observe(el);
     });
 
-    // "WordPress projects" toggle
-    (function () {
-      var btn = document.querySelector(".wp-toggle"), list = document.getElementById("wpList");
-      if (!btn || !list) return;
+    // "WordPress projects" / "Canva presentations" toggles
+    document.querySelectorAll(".wp-toggle").forEach(function (btn) {
+      var list = document.getElementById(btn.getAttribute("data-toggle"));
+      if (!list) return;
       btn.addEventListener("click", function () {
         var open = list.hidden;
         list.hidden = !open;
         btn.setAttribute("aria-expanded", String(open));
       });
-    })();
+    });
 
     // Carousels (skills + certificates): native scroll-snap, arrows and dots drive it
     document.querySelectorAll("[data-carousel]").forEach(function (c) {
