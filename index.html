@@ -155,20 +155,21 @@
       padding: var(--rpad);
       display: grid; grid-template-columns: 1fr 1.4fr; gap: clamp(1.5rem, 5vw, 4rem);
     }
-    /* timeline: full-width cards joined by a centre line, with a dot where each card begins */
-    :root { --tl-gap: 3rem; }
-    .rcard { position: relative; margin-top: var(--tl-gap); }
+    /* timeline: one continuous line runs through the cards beside the dates, with a dot level with each date */
+    :root { --tl-gap: 3rem; --tl-col: 16rem; --tl-cgap: 4rem; --tl-x: calc(var(--rpad) + var(--tl-col) + var(--tl-cgap) / 2); --tl-dot: calc(var(--rpad) + .85rem); }
+    .rcard { position: relative; margin-top: var(--tl-gap); grid-template-columns: var(--tl-col) 1fr; column-gap: var(--tl-cgap); }
     .exp-row + .rcard { margin-top: 2.4rem; }
     .rcard::before {
-      content: ""; position: absolute; left: calc(50% - 2px); bottom: 100%;
-      width: 4px; height: var(--tl-gap); background: linear-gradient(var(--blue), var(--blue-dk));
-      border-radius: 2px; opacity: .85;
+      content: ""; position: absolute; z-index: 1; left: calc(var(--tl-x) - 2px); top: calc(-1 * var(--tl-gap));
+      width: 4px; height: calc(100% + var(--tl-gap)); background: var(--blue); border-radius: 2px;
     }
-    .exp-row + .rcard::before { display: none; }
+    .exp-row + .rcard::before { top: var(--tl-dot); height: calc(100% - var(--tl-dot) + var(--tl-gap)); }
+    .rcard:last-child::before { height: calc(var(--tl-gap) + var(--tl-dot)); }
+    .exp-row + .rcard:last-child::before { display: none; }
     .rcard::after {
-      content: ""; position: absolute; left: calc(50% - 10px); top: -10px;
+      content: ""; position: absolute; z-index: 2; left: calc(var(--tl-x) - 10px); top: calc(var(--tl-dot) - 10px);
       width: 20px; height: 20px; box-sizing: border-box; border-radius: 50%;
-      background: var(--white); border: 4px solid var(--blue); box-shadow: 0 0 0 5px var(--beige);
+      background: var(--white); border: 4px solid var(--blue); box-shadow: 0 0 0 5px var(--white);
     }
     .exp-row + .rcard::after { background: var(--blue); }
     .ryears { font-family: var(--font-head); font-weight: 800; color: var(--blue); font-size: 1.3rem; margin: 0 0 .9rem; }
@@ -264,7 +265,8 @@
 
     /* ---------------- RESPONSIVE ---------------- */
     @media (max-width: 860px) {
-      .rcard { grid-template-columns: 1fr; gap: 1.4rem; }
+      :root { --tl-x: calc(var(--rpad) / 2); }
+      .rcard { grid-template-columns: 1fr; row-gap: 1.4rem; padding-left: calc(var(--rpad) + 1rem); }
       .pcard { grid-template-columns: 1fr; }
       .pimg { min-height: 240px; order: 2; }
       .award-banner { grid-template-columns: 1fr; }
