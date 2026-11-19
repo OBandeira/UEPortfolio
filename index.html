@@ -149,11 +149,26 @@
     /* ---------------- RÉSUMÉ ---------------- */
     .exp-row { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; margin-top: 3rem; flex-wrap: wrap; }
     .exp-row h3 { font-weight: 800; font-size: clamp(1.7rem, 4vw, 2.5rem); }
+    :root { --rpad: clamp(1.6rem, 4vw, 2.8rem); }
     .rcard {
       background: var(--white); box-shadow: var(--card-sh); margin-top: 1.8rem;
-      padding: clamp(1.6rem, 4vw, 2.8rem);
+      padding: var(--rpad);
       display: grid; grid-template-columns: 1fr 1.4fr; gap: clamp(1.5rem, 5vw, 4rem);
     }
+    /* timeline: a vertical line runs card-to-card, with a dot beside each year */
+    .rcard { position: relative; margin-left: clamp(1.9rem, 5vw, 3rem); }
+    .rcard::before {
+      content: ""; position: absolute; left: calc(-1 * clamp(1.9rem, 5vw, 3rem) / 2 - 2px); top: calc(var(--rpad) + .85rem);
+      width: 4px; height: calc(100% + 1.8rem); background: linear-gradient(var(--blue), var(--blue-dk));
+      border-radius: 2px; opacity: .85;
+    }
+    .rcard:last-child::before { display: none; }
+    .rcard::after {
+      content: ""; position: absolute; left: calc(-1 * clamp(1.9rem, 5vw, 3rem) / 2 - 10px); top: calc(var(--rpad) + .85rem - 10px);
+      width: 20px; height: 20px; box-sizing: border-box; border-radius: 50%;
+      background: var(--white); border: 4px solid var(--blue); box-shadow: 0 0 0 5px var(--beige);
+    }
+    .exp-row + .rcard::after { background: var(--blue); }
     .ryears { font-family: var(--font-head); font-weight: 800; color: var(--blue); font-size: 1.3rem; margin: 0 0 .9rem; }
     .rpos { font-family: var(--font-head); font-weight: 700; color: var(--ink); font-size: 1.15rem; letter-spacing: .02em; text-transform: uppercase; margin: 0; }
     .rco { margin: .3rem 0 0; color: var(--body); }
